@@ -218,8 +218,6 @@ function fadeInCustom(element){     // Create custom fading effect for showing i
   lazyload();
 }
 
-
-
 function lazyload(){
   const lazyImagesList = document.getElementsByClassName('lazy');
   for(let i = 0; i < lazyImagesList.length; i++) {
