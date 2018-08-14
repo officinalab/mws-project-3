@@ -1,0 +1,20 @@
+/****** 460 < VP <  768 *******/
+#map {
+  height: 350px;
+}
+.filter-options h2 {
+    display: block;
+}
+.inside #map-container {
+  height: 350px;
+  position: relative;
+  width: 100%;
+  margin-top: 0;
+}
+#restaurant-img {
+  width: 100%;
+}
+#restaurant-container,
+#reviews-container {
+  width: 96%;
+}

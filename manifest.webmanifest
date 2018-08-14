@@ -1,0 +1,34 @@
+{
+    "name": "Restaurant Review",
+    "short_name": "rr",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#000000",
+    "theme_color": "#c95100",
+    "description": "A simply Restaurant Review app.",
+    "icons": [{
+      "src": "images/resto-icon-64.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "images/resto-icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "images/resto-icon-219.png",
+      "sizes": "219x219",
+      "type": "image/png"
+    },
+    {
+      "src": "images/resto-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "images/resto-icon-719.png",
+      "sizes": "719x719",
+      "type": "image/png"
+    }]
+  }

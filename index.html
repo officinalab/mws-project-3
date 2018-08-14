@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/styles.min.css">
+  <link media="screen and (max-width: 460px)"  rel="stylesheet" href="css/small.min.css" >
+  <link media="screen and (min-width: 461px) and (max-width:768px)" rel="stylesheet" href="css/medium.css" >
+  <link rel="preconnect" href="  https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://maps.gstatic.com">
+  <link rel="preconnect" href="http://localhost:1337">
+  <!-- FAVICON -->
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <meta name="theme-color" content="#c95100">
+  <title>Restaurant Reviews</title>
+  <meta name="description" content="Restaurant Reviews - MWS PROJECT by Rivetta Claudio">
+  <link rel="manifest" href="/manifest.webmanifest">
+</head>
+
+<body>
+  <header>
+    <nav>
+     <h1><a href="/"><span>Restaurant Reviews</span></a></h1>
+    </nav>
+  </header>
+  <main id="maincontent">
+
+    <section id="map-container" class="map" >
+      <a id="gotofilter" href="#neighborhoods-select" class="gotofilter">Skip to filter</a>
+      <a id="showmap" href="#">Display on map</a>
+      <div id="map"  role="application" aria-label="google map" style="display: none" ></div> <!--  -->
+    </section>
+    <section id="filter" class="filter">
+      <div class="filter-options">
+        <h2>Filter Results</h2>
+          <select id="neighborhoods-select" name="neighborhoods" role="menu" aria-label="select by neighborhoods">
+            <option value="all" role="menuitem">All Neighborhoods</option>
+          </select>
+          <select id="cuisines-select" name="cuisines" role="menu" aria-label="Select by cuisines">
+            <option value="all" role="menuitem"> Cuisines</option>
+          </select>
+      </div>
+    </section>
+    <section class="list">
+      <ul id="restaurants-list" class="restaurants-list"></ul>
+    </section>
+  </main>
+  <script type="application/javascript" src="js/idb.js"></script>
+  <script type="application/javascript" charset="utf-8" src="js/custom.js"></script>
+  <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUu3WXHWeqmJiqdj_IcXBMWkkMd4y__3I&libraries=places&callback=initMap"></script>
+  <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
+  <footer id="footer" >
+    Copyright (c) 2018 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
+  </footer>
+
+</body>
+
+</html>
