@@ -23,20 +23,18 @@ const dbPromise = self.idb.open('rr', 1, function(upgradeDb) {
     reviewsIdb.createIndex('restaurant_id', 'restaurant_id', {unique: false});
   }
 }); // CREATE IDB
-
-
 // link to filter (skip-map and return to top)
 function goto(element){
-    const target = document.getElementById(element);
-    window.scrollTo(0, target.offsetTop - 50);
-    target.focus();
-  }
+  const target = document.getElementById(element);
+  window.scrollTo(0, target.offsetTop - 50);
+  target.focus();
+}
 
 const gotofilter = document.getElementById('gotofilter');
 gotofilter.addEventListener('click', function(event){
-    event.preventDefault();
-    element = this.getAttribute('href').slice(1);
-    goto(element);
+  event.preventDefault();
+  element = this.getAttribute('href').slice(1);
+  goto(element);
 });
 gotofilter.addEventListener('keyup',function(event){
   event.preventDefault();

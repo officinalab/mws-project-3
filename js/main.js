@@ -68,22 +68,7 @@ fillCuisinesHTML = (cuisines = self.cuisines) => {
   });
 }
 
-/**
- * Initialize Google map, called from HTML.
- */
-window.initMap = () => {
-  let loc = {
-    lat: 40.722216,
-    lng: -73.987501
-  };
 
-  self.map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 12,
-    center: loc,
-    scrollwheel: false
-  });
-  updateRestaurants();
-}
 
 /**
  * Update page and map for current restaurants.
@@ -233,6 +218,8 @@ function fadeInCustom(element){     // Create custom fading effect for showing i
   lazyload();
 }
 
+
+
 function lazyload(){
   const lazyImagesList = document.getElementsByClassName('lazy');
   for(let i = 0; i < lazyImagesList.length; i++) {
@@ -256,21 +243,38 @@ function lazyload(){
 }
 
 // Add event listeners to images
-window.addEventListener('DOMContentLoaded', lazyload);
-window.addEventListener('load', lazyload);
+//window.addEventListener('DOMContentLoaded', updateRestaurants);
+window.addEventListener('load', updateRestaurants);
 window.addEventListener('resize', lazyload);
 window.addEventListener('scroll', lazyload);
 
+function initMap(){
+  /**
+  * Initialize Google map, called from HTML.
+  */
+ let loc = {
+   lat: 40.722216,
+   lng: -73.987501
+ };
+
+ self.map = new google.maps.Map(document.getElementById('map'), {
+   zoom: 12,
+   center: loc,
+   scrollwheel: false
+ });
+}
 
 // MAP
 function showMap(){
+  initMap();
   document.getElementById('showmap').style.display = "none";
-  document.getElementById('map').style.display = "block";
+  document.getElementById('map-container').style.display = "block";
+  document.getElementById('filter').classList.remove("filterm");
+  updateRestaurants();
   return false;
 }
 document.getElementById('showmap').addEventListener('click', (event) => {
   event.preventDefault();
   showMap();
-  updateRestaurants();
-  lazyload();
+  return false;
 });

@@ -25,13 +25,11 @@
     </nav>
   </header>
   <main id="maincontent">
-
-    <section id="map-container" class="map" >
-      <a id="gotofilter" href="#neighborhoods-select" class="gotofilter">Skip to filter</a>
-      <a id="showmap" href="#">Display on map</a>
-      <div id="map"  role="application" aria-label="google map" style="display: none" ></div> <!--  -->
+    <section id="map-container" class="map" style="display: none" >
+      <a id="gotofilter" href="#neighborhoods-select" class="gotofilter">Skip to List</a>
+      <div id="map"  role="application" aria-label="google map"  ></div> <!--  -->
     </section>
-    <section id="filter" class="filter">
+    <section id="filter" class="filter filterm">
       <div class="filter-options">
         <h2>Filter Results</h2>
           <select id="neighborhoods-select" name="neighborhoods" role="menu" aria-label="select by neighborhoods">
@@ -42,6 +40,9 @@
           </select>
       </div>
     </section>
+    <section id="call-map">
+      <a id="showmap" href="#">Show on map</a>
+    </section>
     <section class="list">
       <ul id="restaurants-list" class="restaurants-list"></ul>
     </section>
@@ -49,7 +50,7 @@
   <script type="application/javascript" src="js/idb.js"></script>
   <script type="application/javascript" charset="utf-8" src="js/custom.js"></script>
   <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUu3WXHWeqmJiqdj_IcXBMWkkMd4y__3I&libraries=places&callback=initMap"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUu3WXHWeqmJiqdj_IcXBMWkkMd4y__3I&libraries=places"></script>
   <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
   <footer id="footer" >
     Copyright (c) 2018 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.

@@ -146,14 +146,17 @@ nav h1 a {
   z-index: 1000;
 }
 .gotofilter:focus{
-  top: 50px;
+  top: 150px;
   color: #fff;
+}
+#call-map{
+  text-align: center;
 }
 #map-container {
   margin-top: 72px;
   text-align: center;
 }
-#map, #static_map {
+#map {
   margin: 0 auto;
   height: 400px;
   width: 100%;
@@ -161,7 +164,19 @@ nav h1 a {
   max-width: 1024px;
 }
 
+#showmap, #showmap:visited, #showmap:link{
+  color: #FFFFFF;
+  font-size: 1.3em;
+  text-transform: uppercase;
+}
+#showmap:hover, #showmap:active, showmap:focus{
+  color: #c95100;
+}
+
 /* ====================== Restaurant Filtering ====================== */
+.filterm {
+  margin-top: 72px;
+}
 .filter-options {
   width: 100%;
   background-color: #222;
