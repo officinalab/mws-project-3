@@ -258,7 +258,7 @@ nav h1 a:active,
   font-size: 1rem;
   color: #333;
 }
-.restaurants-list-item a {
+.restaurants-list-item > a {
   background-color: #c95100;
   /* border-bottom: 3px solid #eee; */
   color: #fff;
@@ -270,12 +270,27 @@ nav h1 a:active,
   text-decoration: none;
   text-transform: uppercase;
 }
-.restaurants-list-item a:hover,
-.restaurants-list-item a:active,
-.restaurants-list-item a:focus{
+.restaurants-list-item > a:hover,
+.restaurants-list-item > a:active,
+.restaurants-list-item > a:focus{
   outline: 0;
   box-shadow: 0 0  8px 3px rgba(51, 151 ,219, 1);
+}
 
+/* Favorite */
+a.favorite{
+  color: #333;
+  font-size: 1.3em;
+}
+a.favorite:hover{
+  color: #ccc;
+}
+a.isfavorite{
+  color: #c95100;
+  font-size: 1.4em;
+}
+a.isfavorite:hover{
+  color: #ccc;
 }
 /* ====================== Restaurant Details ====================== */
 
@@ -291,6 +306,10 @@ nav h1 a:active,
   background-color: #ccc;
   height: 100%;
   width: 100%;
+}
+
+.inside #map .alert p{
+  color: #FFFFFF;
 }
 .inside #footer {
   bottom: 0;

@@ -12,16 +12,18 @@ self.addEventListener('install', function(event) {
       caches.open(staticCacheName).then(function(cache) {
         console.log("cache created!");
         return cache.addAll([
-          '/css/medium.css',
-          '/css/small.css',
-          '/css/styles.css',
-          '/favicon.ico',
-          '/index.html',
-          '/restaurant.html',
-          '/js/dbhelper.js',
-          '/js/main.js',
-          '/js/restaurant_info.js',
-          '/js/custom.js'
+            '/restaurant.html',
+            '/css/medium.css',
+            '/css/small.min.css',
+            '/css/styles.min.css',
+            '/js/idb.js',
+            '/js/custom.js',
+            '/js/dbhelper.js',
+            '/js/main.js',
+            '/js/restaurant_info.js',
+            '/favicon.ico',
+            '/index.html',
+            '/'
         ]);
       }).catch(function(error){
           console.log(error);
@@ -53,18 +55,24 @@ self.addEventListener('fetch', function(event) {
             return;
         }
     }
-
     if (requestUrl.origin === location.origin) {
         if (requestUrl.pathname.startsWith('/images/')) {
             event.respondWith(serveImage(event.request));
             return;
         }
     }
+    if (requestUrl.origin === location.origin) {
+        if (requestUrl.pathname.startsWith('/reviews/')) {
+            event.respondWith(serveReviews(event.request));
+            return;
+        }
+    }
     event.respondWith(
         caches.open(staticCacheName).then(function(cache) {
           return cache.match(event.request).then(function (response) {
+            // Check if we received a valid response
             return response || fetch(event.request).then(function(response) {
-                if(event.request.method === 'GET'){
+                if(event.request.method === 'GET' && response.status === 200){
                     cache.put(event.request, response.clone());
                 }
                 return response;
@@ -75,12 +83,14 @@ self.addEventListener('fetch', function(event) {
 });
 
 function serveRestaurant(request) {
-    var storageUrl = request.url.substring(0,request.url.indexOf('?')-1); //.replace(/-\d+px\.jpg$/, '');
+    var storageUrl = request.url.substring(0,request.url.indexOf('?')); //.replace(/-\d+px\.jpg$/, '');
     return caches.open(staticCacheName).then(function(cache) {
         return cache.match(storageUrl).then(function(response) {
             if (response) return response;
             return fetch(request).then(function(networkResponse) {
-                cache.put(storageUrl, networkResponse.clone());
+                if(request.method === 'GET' && networkResponse.status === 200){
+                    cache.put(storageUrl, networkResponse.clone());
+                }
                 return networkResponse;
             });
         });
@@ -89,13 +99,19 @@ function serveRestaurant(request) {
 
 function serveImage(request) {
     var storageUrl = request.url.replace(/-\w+_\w+\.jpg$/i, '');
-    return caches.open(staticCacheName).then(function(cache) {
+    return caches.open(contentImgsCache).then(function(cache) {
         return cache.match(storageUrl).then(function(response) {
             if (response) return response;
             return fetch(request).then(function(networkResponse) {
-                cache.put(storageUrl, networkResponse.clone());
+                if(request.method === 'GET' && networkResponse.status === 200){
+                    cache.put(storageUrl, networkResponse.clone());
+                }
                 return networkResponse;
             });
         });
     });
+}
+
+function serveReviews(request) {
+    return fetch(request);
 }
